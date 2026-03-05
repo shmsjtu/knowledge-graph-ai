@@ -1,0 +1,6 @@
+openai
+streamlit
+streamlit-agraph
+pyvis
+networkx
+python-dotenv

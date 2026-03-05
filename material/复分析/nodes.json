@@ -1,0 +1,626 @@
+[
+  {
+    "name": "复数的代数形式",
+    "desc": "复数 $z$ 可唯一表示为 $x + iy$，其中 $x, y$ 分别为实部和虚部，$i$ 为虚数单位。",
+    "level": 2,
+    "color": "#FFFF00",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "复数的共轭与模",
+    "desc": "共轭 $\\bar{z} = x - iy$ 为关于实轴的对称点；模 $|z| = \\sqrt{x^2 + y^2}$ 满足三角不等式 $|z_1 + z_2| \\le |z_1| + |z_2|$。",
+    "level": 3,
+    "color": "#008000",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "复数的指数与三角形式",
+    "desc": "利用 Euler 公式 $e^{i\\theta} = \\cos \\theta + i \\sin \\theta$，复数可表示为 $z = r(\\cos \\theta + i \\sin \\theta)$ 或 $z = r e^{i\\theta}$。",
+    "level": 2,
+    "color": "#FFFF00",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "复数的辐角与主值",
+    "desc": "辐角 $\\text{Arg } z = \\text{arg } z + 2k\\pi$ 为多值函数，主值 $\\text{arg } z$ 取值范围规定为 $(-\\pi, \\pi$。",
+    "level": 3,
+    "color": "#008000",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "扩充复平面",
+    "desc": "在复平面 $\\mathbb{C}$ 中引入无穷远点 $\\infty$，定义集合 $\\mathbb{C}_{\\infty} = \\mathbb{C} \\cup \\{\\infty\\}$ 及其代数运算规则。",
+    "level": 2,
+    "color": "#FFFF00",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "黎曼球与球极投影",
+    "desc": "通过球极投影建立单位球面与扩充复平面的一一对应，其中球面北极点对应复平面上的无穷远点。",
+    "level": 3,
+    "color": "#FFA500",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "复变函数的极限定义",
+    "desc": "指当 $z$ 趋近 $z_0$ 时 $f(z)$ 趋近定值 $A$，要求在去心邻域内沿任意路径趋近均成立。",
+    "level": 2,
+    "color": "#00ff24",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "极限存在的充要条件",
+    "desc": "复函数 $f(z) = u + iv$ 极限存在的充要条件是其实部函数 $u(x,y)$ 与虚部函数 $v(x,y)$ 的二元实极限均存在。",
+    "level": 1,
+    "color": "#FFA500",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "复变函数的连续性",
+    "desc": "若函数 $f(z)$ 在 $z_0$ 处有定义、极限存在且极限值等于该点函数值，则称其在 $z_0$ 处连续。",
+    "level": 2,
+    "color": "#FFFF00",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "复微分的定义",
+    "desc": "若函数 $f(z)$ 在 $z_0$ 点的差商极限 $f'(z_0)$ 存在且有限，则称该函数在点 $z_0$ 复可微。",
+    "level": 2,
+    "color": "#FFFF00",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "复导数的几何意义",
+    "desc": "复导数 $\\Delta w \\approx f'(z_0) \\Delta z$ 代表局部微小位移经历了均匀的旋转与伸缩变换。",
+    "level": 3,
+    "color": "#008000",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "Cauchy-Riemann 方程",
+    "desc": "复函数可微的充要条件，要求实部与虚部偏导数满足 $u_x=v_y$ 和 $u_y=-v_x$。",
+    "level": 0,
+    "color": "#FF0000",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "C-R 方程的几何本质",
+    "desc": "其 Jacobian 矩阵对应旋转缩放矩阵，揭示了复可微性在几何上等价于保角性。",
+    "level": 3,
+    "color": "#008000",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "全纯函数",
+    "desc": "指在区域内每一点都复可微的函数，其对函数平滑度的约束远强于实可微函数。",
+    "level": 0,
+    "color": "#FF0000",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "多值函数与支点",
+    "desc": "自变量绕某点运动后函数值无法回到原值的现象，使得该演变发生的点称为支点。",
+    "level": 2,
+    "color": "#FFFF00",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "割线",
+    "desc": "通过在复平面划定不可逾越的界限，限制路径以从多值函数中提取出单值全纯分支。",
+    "level": 1,
+    "color": "#FFA500",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "割线的选取原则",
+    "desc": "割线通常连接支点或无穷远点，其位置选取具有任意性，决定了单值分支的定义方式。",
+    "level": 3,
+    "color": "#008000",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "复指数函数",
+    "desc": "定义为 $e^z = e^x(\\cos y + i \\sin y)$，在全平面全纯并具有虚周期 $2\\pi i$。",
+    "level": 1,
+    "color": "#FFA500",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "多值对数函数定义",
+    "desc": "定义为 $\\text{Ln } z = \\ln |z| + i \\text{Arg } z$，通常通过选取负实轴为割线来确定主值分支。",
+    "level": 1,
+    "color": "#FFA500",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "一般复幂函数定义",
+    "desc": "基于对数定义为 $z^\\alpha = e^{\\alpha \\text{Ln } z}$，其多值性的分支数量取决于指数 $\\alpha$ 的性质。",
+    "level": 1,
+    "color": "#FFA500",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "复三角与双曲函数",
+    "desc": "利用指数形式定义，保留了实数域恒等式，但在复域内不再有界且相互间存在转换关系。",
+    "level": 1,
+    "color": "#FFA500",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "Cauchy-Goursat 定理",
+    "desc": "单连通区域内解析函数的简单闭曲线积分为零，即 $\\oint_C f(z) \\, dz = 0$，是复积分理论的核心基石。",
+    "level": 0,
+    "color": "#FF0000",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "Cauchy 积分公式",
+    "desc": "通过边界上的积分值表示区域内部点的值：$f(z_0) = \\frac{1}{2\\pi i} \\oint_C \\frac{f(z)}{z - z_0} \\, dz$。",
+    "level": 0,
+    "color": "#FF0000",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "全纯函数的光滑性",
+    "desc": "若函数在区域内全纯，则它具有任意阶导数，且其导数 $f^{(n)}(z)$ 仍为全纯函数。",
+    "level": 3,
+    "color": "#008000",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "高阶导数公式",
+    "desc": "描述解析函数 $n$ 阶导数与周线积分关系的通用公式：$f^{(n)}(z_0) = \\frac{n!}{2\\pi i} \\oint_C \\frac{f(z)}{(z - z_0)^{n+1}} \\, dz$。",
+    "level": 1,
+    "color": "#FFA500",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "整幂函数的积分",
+    "desc": "$z^n$ 在闭曲线上的积分规律，当 $n \\neq -1$ 时积分为零，反映了孤立奇点对积分的影响。",
+    "level": 4,
+    "color": "#0000FF",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "Cauchy 不等式",
+    "desc": "利用圆周上的函数上界 $M(R)$ 估计解析函数在圆心处的各阶导数大小：$|f^{(n)}(z_0)| \\le \\frac{n! M(R)}{R^n}$。",
+    "level": 3,
+    "color": "#008000",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "Liouville 定理",
+    "desc": "指出复平面上的有界整函数必为常数，是复分析中体现解析函数刚性的重要定理。",
+    "level": 1,
+    "color": "#FFA500",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "Morera 定理",
+    "desc": "Cauchy 定理的逆定理，规定若连续函数沿单连通区域内任意简单闭回路积分为零，则该函数在该区域内解析。",
+    "level": 3,
+    "color": "#008000",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "Taylor 展开定理",
+    "desc": "设 $f(z)$ 在圆盘 $|z - z_0| < R$ 内全纯，则其可唯一展开为收敛幂级数 $\\sum_{n=0}^{\\infty} a_n (z - z_0)^n$，系数由 $n$ 阶导数或围道积分确定。",
+    "level": 0,
+    "color": "#FF0000",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "全纯与解析的等价性",
+    "desc": "在复平面区域内，处处可导的全纯函数与可展开为幂级数的解析函数是完全等价的概念，这与实变函数有本质区别。",
+    "level": 0,
+    "color": "#FF0000",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "Taylor 展开的局部性",
+    "desc": "全纯函数能够展开成幂级数的性质具有局部性，通常受限于函数在特定邻域内的全纯表现。",
+    "level": 3,
+    "color": "#008000",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "Laurent 级数定义",
+    "desc": "定义在圆环域 $R_1 < |z - z_0| < R_2$ 上的级数，由包含负幂项的主要部分和包含正幂项的解析部分组成。",
+    "level": 2,
+    "color": "#FFFF00",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "Laurent 展开定理",
+    "desc": "设 $f(z)$ 在圆环域内全纯，则其可唯一展开为 Laurent 级数 $\\sum_{n=-\\infty}^{\\infty} c_n (z - z_0)^n$，系数通过围道积分公式统一计算。",
+    "level": 0,
+    "color": "#FF0000",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "孤立奇点",
+    "desc": "函数在某点的去心邻域内解析但在该点不解析，是研究奇点分类的基础概念。",
+    "level": 0,
+    "color": "#FF0000",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "洛朗级数主要部分",
+    "desc": "指洛朗展式中的负幂项部分 $\\sum_{n=1}^{+\\infty} c_{-n} (z-a)^{-n}$，是区分孤立奇点类型的核心依据。",
+    "level": 1,
+    "color": "#FFA500",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "可去奇点",
+    "desc": "洛朗展式中不含负幂项的奇点。可以通过补充定义使函数在该点解析。",
+    "level": 2,
+    "color": "#FFFF00",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "可去奇点的判定定理",
+    "desc": "判定可去奇点的充要条件，即函数在奇点邻域内有界或极限存在且有限。",
+    "level": 3,
+    "color": "#008000",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "极点",
+    "desc": "洛朗展式中主要部分仅含有限个非零项。最高负幂次数 $m$ 称为极点的阶或级。",
+    "level": 2,
+    "color": "#FFFF00",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "极点的判定",
+    "desc": "点 $a$ 是极点的充要条件为 $z$ 趋于 $a$ 时，函数 $f(z)$ 的极限为无穷大。",
+    "level": 3,
+    "color": "#008000",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "解析函数在零点与极点的局部结构",
+    "desc": "利用解析函数 $\\phi(z)$ 与 $(z-a)^m$ 的乘积或商来统一表示零点与极点的解析性质。",
+    "level": 1,
+    "color": "#FFA500",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "极点与零点互逆定理",
+    "desc": "揭示了极点与零点的对偶关系：$f(z)$ 的 $m$ 级极点即为其倒数函数的 $m$ 级零点。",
+    "level": 1,
+    "color": "#FFA500",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "本质奇点",
+    "desc": "洛朗展式中主要部分含有无穷多项的奇点，函数在该点附近的性态极其复杂。",
+    "level": 2,
+    "color": "#FFFF00",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "指数函数本质奇点示例",
+    "desc": "函数 $e^{\\frac{1}{z}}$ 在 $z=0$ 处的展式包含无穷多负幂项，是典型的本质奇点。 ",
+    "level": 4,
+    "color": "#0000FF",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "本质奇点极限判定",
+    "desc": "点 $a$ 是本质奇点的充要条件是函数在该点的极限既非有限值也非无穷大。",
+    "level": 3,
+    "color": "#008000",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "魏尔斯特拉斯-卡索拉蒂定理",
+    "desc": "指出函数在本质奇点的任意小邻域内的值在复平面上是稠密的。",
+    "level": 3,
+    "color": "#008000",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "无穷远点奇点分类",
+    "desc": "通过变换 $t=1/z$ 将 $\\infty$ 处的性质转化为 $t=0$ 处的孤立奇点性质进行分析。",
+    "level": 1,
+    "color": "#FFA500",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "亚纯函数",
+    "desc": "在区域内除了极点外处处解析的函数。其极点在区域内是孤立的且没有聚点。",
+    "level": 2,
+    "color": "#FFFF00",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "留数",
+    "desc": "函数 $f(z)$ 在孤立奇点 $a$ 的洛朗级数展开式中，项 $(z-a)^{-1}$ 的系数 $c_{-1}$ 称为其在该点处的留数，反映了奇点处的局部积分性质。",
+    "level": 2,
+    "color": "#FFFF00",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "留数定理",
+    "desc": "复分析的核心定理，规定了解析函数沿闭曲线的积分等于该曲线包围的所有孤立奇点处的留数之和乘以 $2\\pi i$。",
+    "level": 1,
+    "color": "#FF0000",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "一级极点留数计算",
+    "desc": "若 $a$ 为一级极点，留数可通过 $\\lim_{z \\to a} (z-a)f(z)$ 计算；对于分式形式 $P/Q$，若 $a$ 是 $Q$ 的单零点，则留数为 $P(a)/Q'(a)$。",
+    "level": 3,
+    "color": "#008000",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "$m$ 级极点留数计算",
+    "desc": "针对高阶极点的通用公式，通过对函数乘以 $(z-a)^m$ 后求 $m-1$ 阶导数并取极限，再除以 $(m-1)!$ 得到留数。",
+    "level": 3,
+    "color": "#008000",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "幅角原理",
+    "desc": "建立了亚纯函数在闭曲线上的幅角总变化量与区域内部零点、极点个数（计入重数）之间的代数联系。",
+    "level": 0,
+    "color": "#FF0000",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "对数导数的留数计算",
+    "desc": "幅角原理的推导核心，即 $\\ln f(z)$ 导数在 $m$ 阶零点处留数为 $m$，在 $n$ 阶极点处留数为 $-n$。",
+    "level": 1,
+    "color": "#FFA500",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "幅角原理的几何意义",
+    "desc": "公式 $\\frac{1}{2\\pi} \\Delta_C \\arg f(z)$ 计算的是像点 $w = f(z)$ 在复平面上绕原点转动的圈数（绕数）。",
+    "level": 3,
+    "color": "#008000",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "Rouché 定理",
+    "desc": "若在边界上满足 $|g(z)| < |f(z)|$，则主项 $f(z)$ 与扰动后的函数 $f(z) + g(z)$ 在内部具有相同个数的零点。",
+    "level": 0,
+    "color": "#FF0000",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "零点扰动定理 (Lemma)",
+    "desc": "解析函数在孤立零点附近的取值具有稳定性，证明了在微小扰动下方程 $f(z) = w$ 根的个数守恒。",
+    "level": 1,
+    "color": "#FFA500",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "单叶解析函数定义",
+    "desc": "若函数 $f(z)$ 在区域 $D$ 内解析，且对区域内任意两个不相等的点映射值也不同，则称其为单叶解析函数。",
+    "level": 2,
+    "color": "#FFFF00",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "单叶解析与导数关系",
+    "desc": "单叶解析函数在区域内导数必不为零；反之，导数不为零仅能保证函数的局部单叶性而非全局单叶性。",
+    "level": 3,
+    "color": "#008000",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "全局单叶性反例",
+    "desc": "指数函数 $f(z) = e^z$ 虽然导数处处不为零，但由于其周期性，在全平面上并不具备全局单叶性。",
+    "level": 4,
+    "color": "#0000FF",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "共形映射",
+    "desc": "指在映射过程中能够保持两条曲线间夹角的幅度大小不变，且保持夹角方向不变的几何映射。",
+    "level": 0,
+    "color": "#FF0000",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "共形映射等价条件",
+    "desc": "函数 $w = f(z)$ 在区域内实现共形映射的充分必要条件是该函数在区域内满足单叶且解析。",
+    "level": 1,
+    "color": "#FFA500",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "分式线性映射性质",
+    "desc": "形式为 $w = \\frac{az+b}{cz+d}$ 的映射，具备保圆性、保共轭对称性以及保交角性等核心特性。",
+    "level": 1,
+    "color": "#FFA500",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "指数函数映射特性",
+    "desc": "将 $z$ 平面的水平带状区域映射为 $w$ 平面的角域，保持单叶性的要求是带状区域宽度不超过 $2\\pi$。",
+    "level": 3,
+    "color": "#008000",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "对数函数映射特性",
+    "desc": "作为指数函数的反函数，将角域或圆环映射为矩形或带状区域，应用时需选取特定的单值分支。",
+    "level": 3,
+    "color": "#008000",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "幂函数映射特性",
+    "desc": "将顶点在原点的扇形区域角幅扩大 $n$ 倍，其单叶性条件要求原扇形角幅 $\\alpha \\le \\frac{2\\pi}{n}$。",
+    "level": 3,
+    "color": "#008000",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "正弦函数映射特性",
+    "desc": "利用分解公式将垂直线映射为双曲线，水平线映射为椭圆，常用于将半无限矩形条映射为上半平面。",
+    "level": 3,
+    "color": "#008000",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "开映射定理",
+    "desc": "在区域 $D$ 内全纯且非常数的函数 $f$ 是开映射，即它将 $D$ 内的任何开集映射为复平面上的开集。",
+    "level": 0,
+    "color": "#FF0000",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "极大模原理",
+    "desc": "全纯函数 $|f(z)|$ 若在区域 $D$ 内某点达到局部极大值，则该函数在区域内必为常数。",
+    "level": 0,
+    "color": "#FF0000",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "闭区域极大模原理",
+    "desc": "若 $f(z)$ 在有界区域 $D$ 全纯且在闭包上连续，则其模的最大值必在边界 $\\partial D$ 上达到。",
+    "level": 1,
+    "color": "#FFA500",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "Schwarz 引理",
+    "desc": "定义在单位圆盘 $\\mathbb{D}$ 上的全纯函数若满足 $f(0)=0$ 且被 1 控制，则满足 $|f(z)| \\le |z|$ 及 $|f'(0)| \\le 1$。",
+    "level": 0,
+    "color": "#FF0000",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "Schwarz 引理取等条件",
+    "desc": "若引理中的不等式在某点取得等号，则 $f(z)$ 必然是一个旋转映射 $f(z) = e^{i\\theta}z$。",
+    "level": 3,
+    "color": "#008000",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "Riemann 映照定理",
+    "desc": "非全平面的单连通区域 $D$ 与单位圆盘 $\\mathbb{D}$ 之间存在唯一的全纯双射 $f$ 满足规范化条件 $f(z_0) = 0$ 且 $f'(z_0) > 0$。",
+    "level": 0,
+    "color": "#FF0000",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "Carathéodory 扩张定理",
+    "desc": "若区域边界为 Jordan 闭曲线，则 Riemann 映照可以连续且同胚地延拓到区域的边界上。",
+    "level": 1,
+    "color": "#FFA500",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "反函数定理",
+    "desc": "若 $f(z)$ 在 $z_0$ 邻域内解析且 $f'(z_0) \\neq 0$，则在局部存在唯一的双解析映射及其解析反函数 $z = f^{-1}(w)$。",
+    "level": 0,
+    "color": "#FF0000",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "隐函数定理",
+    "desc": "若二元解析函数 $F(z, w)$ 在点 $(z_0, w_0)$ 消失且关于 $w$ 的偏导数不为零，则局部唯一存在解析函数 $w = g(z)$。",
+    "level": 1,
+    "color": "#ff8600",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "复分析",
+    "desc": "主要研究全纯函数及其性质的数学学科",
+    "level": 0,
+    "color": "#ff0000",
+    "classification": "其他",
+    "theme": ""
+  },
+  {
+    "name": "复平面",
+    "desc": "复平面同构于 R^2，并附带有复结构，包含所有的复数",
+    "level": 0,
+    "color": "#ff0000",
+    "classification": "其他",
+    "theme": ""
+  }
+]
