@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python scripts/migrate_data_format.py)",
+      "Bash(conda activate:*)",
+      "Bash(pip install:*)",
+      "Bash(where python:*)",
+      "Bash(conda env:*)",
+      "Bash(D:\\\\Anaconda\\\\envs\\\\kg_app\\\\python.exe \"C:\\\\Users\\\\SHM\\\\Desktop\\\\test_material\\\\scripts\\\\migrate_data_format.py\")",
+      "Bash(/d/Anaconda/envs/kg_app/python.exe \"/c/Users/SHM/Desktop/test_material/scripts/migrate_data_format.py\")",
+      "Bash(/d/Anaconda/envs/kg_app/python.exe show.py)",
+      "Bash(/d/Anaconda/envs/kg_app/python.exe \"/c/Users/SHM/Desktop/test_material/scripts/test_visualization.py\")",
+      "Bash(/d/Anaconda/envs/kg_app/python.exe \"/c/Users/SHM/Desktop/test_material/scripts/test_comprehensive.py\")",
+      "Bash(/d/Anaconda/envs/kg_app/python.exe -c \"import sys; sys.stdout.reconfigure\\(encoding=''utf-8''\\)\")",
+      "Bash(/d/Anaconda/envs/kg_app/python.exe scripts/test_comprehensive.py)",
+      "Bash(cd:*)",
+      "Bash(/d/Anaconda/envs/kg_app/python.exe \"/c/Users/SHM/Desktop/test_material/scripts/test_load_issue.py\")",
+      "Bash(/d/Anaconda/envs/kg_app/python.exe \"/c/Users/SHM/Desktop/test_material/scripts/test_pipeline_integration.py\")",
+      "Bash(/d/Anaconda/envs/kg_app/python.exe \"/c/Users/SHM/Desktop/test_material/scripts/clean_project.py\")",
+      "Bash(/d/Anaconda/envs/kg_app/python.exe \"/c/Users/SHM/Desktop/test_material/scripts/test_endtoend.py\")",
+      "Bash(/d/Anaconda/envs/kg_app/python.exe \"/c/Users/SHM/Desktop/test_material/scripts/test_simplified.py\")",
+      "Bash(python scripts/test_simplified.py)",
+      "Bash(python:*)",
+      "Bash(tee test_output.log)",
+      "Bash(grep -r PLANNING_SYSTEM_PROMPT --include=*.py src/ tests/ scripts/)"
+    ]
+  }
+}

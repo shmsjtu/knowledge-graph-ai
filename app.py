@@ -87,24 +87,50 @@ def load_graph_data(nodes_path: str, relations_path: str):
 
     # 节点去重：避免 agraph 因重复 id 报错
     node_map = {}
+
+    # Handle both old dict format and new tuple format
     for n in raw_nodes:
-        name = n.get("name")
+        # Check if it's new tuple format: (name, data_dict)
+        if isinstance(n, (list, tuple)) and len(n) == 2:
+            name = n[0]
+            node_data = n[1]
+        # Old dict format
+        elif isinstance(n, dict):
+            name = n.get("name")
+            node_data = n
+        else:
+            continue
+
         if not name:
             continue
         # 保留第一次出现，避免同名节点覆盖
         if name not in node_map:
-            node_map[name] = n
-    nodes = list(node_map.values())
+            node_map[name] = node_data
+
+    nodes = [{"name": name, **data} for name, data in node_map.items()]
     valid_node_names = set(node_map.keys())
 
     # 兼容两种关系格式：
-    # - 新格式: object_a/object_b/relation/explanation
-    # - 旧格式: obj_a/obj_b/rel_name/explan
-    # 编辑页内部统一用旧格式字段，保存时再转回新格式。
+    # - 新格式: tuple/list [node_a, node_b, {"rel": ..., "定理": ...}]
+    # - 旧格式: dict with object_a/object_b/relation/explanation
     rels = []
     for r in raw_rels:
-        obj_a = r.get("obj_a", r.get("object_a", ""))
-        obj_b = r.get("obj_b", r.get("object_b", ""))
+        # Check if it's new tuple format
+        if isinstance(r, (list, tuple)) and len(r) == 3:
+            obj_a = r[0]
+            obj_b = r[1]
+            rel_data = r[2]
+            rel_name = rel_data.get("rel", "")
+            explan = rel_data.get("定理", "")
+        # Old dict format
+        elif isinstance(r, dict):
+            obj_a = r.get("obj_a", r.get("object_a", ""))
+            obj_b = r.get("obj_b", r.get("object_b", ""))
+            rel_name = r.get("rel_name", r.get("relation", ""))
+            explan = r.get("explan", r.get("explanation", ""))
+        else:
+            continue
+
         # 过滤无效关系，避免图渲染阶段异常
         if not obj_a or not obj_b:
             continue
@@ -113,27 +139,85 @@ def load_graph_data(nodes_path: str, relations_path: str):
         rels.append({
             "obj_a": obj_a,
             "obj_b": obj_b,
-            "rel_name": r.get("rel_name", r.get("relation", "")),
-            "explan": r.get("explan", r.get("explanation", "")),
+            "rel_name": rel_name,
+            "explan": explan,
         })
     return nodes, rels
 
 
 def save_graph_data(nodes, rels, nodes_path: str, relations_path: str):
-    with open(nodes_path, 'w', encoding='utf-8') as f:
-        json.dump(nodes, f, indent=4, ensure_ascii=False)
+    # Save nodes in new tuple format
+    nodes_new_format = []
+    for n in nodes:
+        if isinstance(n, dict):
+            name = n.get("name", "未命名")
+            desc = n.get("desc", "")
+            classification = n.get("classification", "定义")
 
-    # 统一写回新格式，保证与 show.py / 主流程兼容
-    normalized_rels = []
+            # Map classification to level and color
+            level_map = {
+                "核心知识点": 0,
+                "主要知识点": 1,
+                "定义": 2,
+                "性质定理": 3,
+                "具体实例": 4,
+                "定理": 3,
+                "命题": 3,
+                "例子": 4
+            }
+            color_map = {
+                "核心知识点": "#FF0000",
+                "主要知识点": "#FFA500",
+                "定义": "#FFFF00",
+                "性质定理": "#008000",
+                "具体实例": "#0000FF",
+                "定理": "#008000",
+                "命题": "#008000",
+                "例子": "#0000FF"
+            }
+
+            level = level_map.get(classification, 2)
+            color = color_map.get(classification, "#FFFF00")
+
+            nodes_new_format.append([name, {
+                "desc": desc,
+                "level": level,
+                "color": color
+            }])
+
+    with open(nodes_path, 'w', encoding='utf-8') as f:
+        json.dump(nodes_new_format, f, indent=2, ensure_ascii=False)
+
+    # Save relations in new tuple format
+    rels_new_format = []
     for r in rels:
-        normalized_rels.append({
-            "object_a": r.get("object_a", r.get("obj_a", "")),
-            "object_b": r.get("object_b", r.get("obj_b", "")),
-            "relation": r.get("relation", r.get("rel_name", "")),
-            "explanation": r.get("explanation", r.get("explan", "")),
-        })
+        obj_a = r.get("object_a", r.get("obj_a", ""))
+        obj_b = r.get("object_b", r.get("obj_b", ""))
+        rel_name = r.get("relation", r.get("rel_name", ""))
+        explan = r.get("explanation", r.get("explan", ""))
+
+        # Map relation to color
+        rel_colors = {
+            "包含": "#F5B721",
+            "属性": "#8cc78a",
+            "充分递推": "#00a5b1",
+            "必要递推": "#00a5b1",
+            "充要递推": "#00a5b1",
+            "部分递推": "#00a5b1",
+            "对应": "#53B5FF",
+            "互斥": "#007665",
+            "等价": "#ff8983"
+        }
+        color = rel_colors.get(rel_name, "#888888")
+
+        rels_new_format.append([obj_a, obj_b, {
+            "rel": rel_name,
+            "定理": explan,
+            "color": color
+        }])
+
     with open(relations_path, 'w', encoding='utf-8') as f:
-        json.dump(normalized_rels, f, indent=4, ensure_ascii=False)
+        json.dump(rels_new_format, f, indent=2, ensure_ascii=False)
 
 
 def get_relation_prediction(client: OpenAI, node_a: str, desc_a: str,
