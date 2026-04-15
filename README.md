@@ -147,7 +147,7 @@ cp .env.example .env
 
 ```
 DEEPSEEK_API_KEY=your_api_key_here
-DEEPSEEK_API_ENDPOINT=https://api.deepseek.com
+DEEPSEEK_API_ENDPOINT=
 ```
 
 > 前往 [DeepSeek 开放平台](https://platform.deepseek.com/) 获取 API Key。
@@ -193,16 +193,14 @@ python scripts/run_pipeline.py
 
 启动后，在侧边栏选择功能页：
 
-#### 📐 页面 A · 管线流程
+#### 📊 页面 B · 图谱可视化与编辑
 
-运行完整的知识图谱提取管线：
+注意：可视化要求的文件在 `material` 中，正确示例如下：
 
-1. **选择教材**：从下拉菜单选择已准备的教材
-2. **配置参数**：设置最大迭代次数、并发数等
-3. **运行管线**：点击「运行管线」按钮，自动执行 Plan-Generate-Evaluate 三阶段
-4. **查看结果**：实时显示进度和提取结果
-
-#### 📊 页面 B · 图谱可视化
+```
+material ---- 复分析 ---- 复分析_nodes.json
+                      |--- 复分析_relations.json
+```
 
 交互式查看知识图谱：
 
@@ -214,8 +212,6 @@ python scripts/run_pipeline.py
    - 滚轮缩放图谱
    - 点击节点查看详细信息
    - 悬停查看关系说明
-
-#### ✏️ 页面 C · 图谱编辑
 
 实时编辑知识图谱：
 
@@ -233,184 +229,19 @@ python scripts/run_pipeline.py
 - 删除孤立节点（无任何关系的节点）
 - 删除重复关系
 
-#### 🤖 页面 D · AI 助手
-
-通过自然语言智能操作图谱：
-
-**智能添加节点**
-- 输入自然语言描述（如："添加一个名为'连续函数'的节点，它是描述函数在某点连续性质的数学概念"）
-- AI 自动生成节点名称、描述、层级等信息
-- 确认后添加到图谱
-
-**智能添加关系**
-- 选择两个节点
-- AI 自动判断它们之间的关系类型
-- 确认后添加关系
-
-**智能补全关系**
-- 自动检测空白关系（缺少类型或说明）
-- 批量调用 AI 补全关系信息
-
 ---
 
 ### 方式二：使用 Pipeline 管线脚本
 
-使用 Plan-Generate-Evaluate 管线自动处理：
+使用 Python 命令行执行管线脚本：
 
-```python
-from new_Lib import PipelineOrchestrator
-
-# 初始化管线
-pipeline = PipelineOrchestrator(
-    api_key="your_api_key",
-    api_endpoint="https://api.deepseek.com"
-)
-
-# 准备教材目录
-material_toc = """
-第一章 集合论
-  §1 集合的基本概念
-  §2 集合的运算
-  §3 映射与函数
-第二章 关系与函数
-  §1 关系的概念
-  §2 等价关系
-"""
-
-# 运行完整管线
-nodes, relations = pipeline.run_full_pipeline(material_toc)
-
-# 保存结果
-from src.core import Node, Relation
-from src.utils import JSONParser
-
-# 保存节点
-nodes_data = [node.to_tuple() for node in nodes]
-with open("output/nodes.json", 'w', encoding='utf-8') as f:
-    json.dump(nodes_data, f, ensure_ascii=False, indent=2)
-
-# 保存关系
-relations_data = [rel.to_tuple() for rel in relations]
-with open("output/relations.json", 'w', encoding='utf-8') as f:
-    json.dump(relations_data, f, ensure_ascii=False, indent=2)
-```
-
----
-
-### 方式四：使用旧版 Streamlit 界面（已废弃）
-
-### 方式二：使用 Streamlit 图形界面
-
-启动旧版应用后在侧边栏选择功能页：
-
-#### 页面 A · 知识图谱生成（旧版）
-
-按顺序执行以下四个步骤：
-
-**步骤 1 · 文本清洗提炼**
-1. 将教材文本保存为 `material/<主题>/<主题>.md`（使用 `## §` 作为章节分隔符）
-2. 在输入框中填写主题名称（如：`微分学`）
-3. 点击「执行步骤 1」，等待 LLM 逐章节清洗完成
-4. 输出：`raw_i.md` 和 `<主题>_subsection_i.md`
-
-**步骤 2 · 节点提取**
-1. 填写主题名称和 subsection 文件数量
-2. 点击「执行步骤 2」，LLM 自动提取知识节点
-3. 输出：`material/<主题>/<主题>_nodes.json`
-
-**步骤 3 · 关系提取**
-1. 填写主题名称和 subsection 文件数量
-2. 点击「执行步骤 3」，执行两阶段关系提取：
-   - Phase 1：基于章节关联矩阵建立骨架关系（多线程并发）
-   - Phase 2：动态修复孤立节点（循环最多 N 轮）
-3. 输出：`material/<主题>/<主题>_relations.json`
-
-**步骤 4 · 图谱微调**
-- **删除节点**：输入节点名称，级联删除所有相关关系
-- **清理重复关系**：自动去除完全重复的关系条目
-- **LLM 智能清洗**：批量评估关系质量，对建议删除的关系逐条人工确认
-
-**图谱预览**：选择主题后点击「生成并预览」，在页面内嵌查看交互式知识图谱。
-
----
-
-#### 页面 B · 图谱查看与编辑（旧版）
-
-选择已生成图谱的主题，进入交互式编辑界面：
-
-| Tab | 功能 |
-|-----|------|
-| 新建节点 | 填写名称、描述、等级、颜色后创建节点 |
-| 新建关系 | 选择起点和终点，建立有向关系 |
-| 编辑节点 | 点击图中节点，修改名称/描述（级联更新关系）或删除节点 |
-| 编辑关系 | 按节点筛选关联关系，修改关系名称/说明或删除关系 |
-| AI 补全 | 一键调用 LLM 批量填充空白的关系类型与说明（多线程并发） |
-
-图谱生成完成后，可使用「生成并预览」内嵌查看；若需单独输出 HTML 文件，可运行 `show.py` 并按提示输入主题名称（逗号分隔可合并多个主题），输出至 `output/` 目录。
-
----
-
-## 技术说明
-
-### Plan-Generate-Evaluate 管线详解
-
-#### 1. Planning LLM（规划阶段）
-- **职责**：分析教材目录，制定构建策略
-- **输入**：教材目录结构（TOC）
-- **输出**：任务列表（JSON），每个任务包含：
-  ```json
-  {
-    "task_id": "task_1",
-    "task_type": "extract_nodes",
-    "target_sections": ["第一章 集合论"],
-    "extraction_focus": ["定义", "定理"],
-    "priority": 1,
-    "dependencies": [],
-    "reasoning": "优先提取核心概念"
-  }
-  ```
-- **优势**：
-  - 避免一次性处理大量文本
-  - 合理分配任务优先级
-  - 支持任务间依赖关系
-
-#### 2. Generation LLM（生成阶段）
-- **职责**：执行提取任务，生成节点和关系
-- **支持工具调用**：
-  - `query_json`：查询已有节点和关系
-  - `get_tex_content`：获取 TeX 源文件内容
-- **输出格式**：
-  - 节点：`["节点名称", {"desc": "描述", "level": 2, "color": "#FFFF00"}]`
-  - 关系：`["节点A", "节点B", {"rel": "包含", "定理": "说明", "color": "#F5B721"}]`
-
-#### 3. Evaluation LLM（评估阶段）
-- **职责**：质量检查，过滤低质量内容
-- **评估维度**：
-  - 节点：完整性、准确性、层级合理性
-  - 关系：逻辑正确性、冗余检测
-- **输出**：合格内容 + 评估反馈
-
-### 关系提取策略（传统方式）
-
-采用「**基础骨架 + 动态图修复**」两阶段策略：
-
-1. **Phase 1 基础骨架**：计算章节间语义关联矩阵（LLM 评分 0-1），对达到阈值（默认 0.7）的章节对并发提取关系
-2. **Phase 2 动态修复**：用 NetworkX 检测孤立节点，召回候选节点池，循环补充关系
-
-### 多线程优化
-
-- **关系提取**（`relation_utils.py`）：同一关系对的多个批次并发执行
-- **AI 补全**（`app.py` 页面 B）：多条空白关系同时并发调用 LLM
-
-### 支持的关系类型（12 种）
-
-`instance` / `use_concept` / `is_special_case_of` / `sufficiently_imply` / `necessarily_imply` / `equivalent` / `partially_imply` / `generalize` / `dual_to` / `exclusive` / `has_property` / `relate_to`
+- 首先修改 `scripts/config.py` 中的 `MATERIAL_NAME` 与 `MATERIAL_FILE` 
 
 ---
 
 ## 数据格式说明
 
-### 节点格式（新格式，推荐）
+### 节点格式（新格式）
 ```json
 [
   ["集合", {"desc": "由确定的、互不相同的对象组成的整体", "level": 0, "color": "#FF0000"}],
@@ -418,21 +249,11 @@ with open("output/relations.json", 'w', encoding='utf-8') as f:
 ]
 ```
 
-### 关系格式（新格式，推荐）
+### 关系格式（新格式）
 ```json
 [
   ["集合", "映射", {"rel": "必要递推", "定理": "映射建立在集合基础上", "color": "#00a5b1"}]
 ]
-```
-
-### 格式转换工具
-
-```python
-from new_Lib import migrate_nodes_json_file, migrate_relations_json_file
-
-# 迁移旧格式到新格式
-migrate_nodes_json_file("old_nodes.json", "new_nodes.json")
-migrate_relations_json_file("old_relations.json", "new_relations.json")
 ```
 
 ---
